@@ -1,0 +1,102 @@
+gyazo.txt		Vim から gyazo へポストするプラグインです。
+
+
+==============================================================================
+概要						*gyazo-introduction*
+
+*gyazo* は gyazo.com へポストを行うプラグインです。
+
+- Gyazoへようこそ : スクリーンショットの瞬間共有 : http://gyazo.com/
+
+Requirement:
+	Ruby      : http://www.ruby-lang.org/
+	PhantomJS : http://phantomjs.org/
+	open-browser.vim(一部のコマンドで必須)
+		: https://github.com/tyru/open-browser.vim
+
+
+==============================================================================
+
+使い方						*gyazo-usage*
+
+
+==============================================================================
+インターフェース				*gyazo-interface*
+
+------------------------------------------------------------------------------
+コマンド					*gyazo-commands*
+
+:GyazoPost {file}				*:GyazoPost*
+	{file} を gyazo へとポストします。
+	ここで post された gyazo への URL は |gyazo#last_post_url()| で取得す
+	る事が出来ます。
+
+:GyazoOpenBrowser {file}			*:GyazoOpenBrowser*
+	|:GyazoPost| と同等です。
+	コマンドの実行後に |open-browser| を使用してブラウザで Gyazo のペー
+	ジを開きます。
+
+:[range]GyazoPostCurrentWindow			*:GyazoPostCurrentWindow*
+	カレントウィンドウの内容を gyazo へと post します。
+	ここで post された gyazo への URL は |gyazo#last_post_url()| で取得す
+	る事が出来ます。
+
+:[range]GyazoOpenBrowserCurrentWindow		*:GyazoOpenBrowserCurrentWindow*
+	|:GyazoOpenBrowserCurrentWindow| と同等です。
+	コマンドの実行後に |open-browser| を使用してブラウザで Gyazo のペー
+	ジを開きます。
+
+------------------------------------------------------------------------------
+関数						*gyazo-functions*
+
+					*gyazo#make_html_from_current_window()*
+gyazo#make_html_from_current_window([{option}])
+	カレントウィンドウを HTML 化します。
+	HTML 化には |2html.vim| が使用されます。
+	{option} は辞書で以下の値を渡すことが出来ます。
+
+	"first"  : 開始行
+		デフォルト値：line("w0")
+	"last"   : 終了行
+		デフォルト値：line("w$")
+	"output" : 出力するファイル
+		デフォルト値：tempname()
+Example:>
+	" 3行目から15行目を HTML 化して test.html に出力する
+	let opt = {"first" : 3, "last" : 15, "output": "test.html"}
+	call gyazo#make_html_from_current_window(opt)
+<
+
+					*gyazo#make_html_from_current_window_full()*
+gyazo#make_html_from_current_window_full([{output}])
+	カレントウィンドウの全体を HTML 化して {output} に出力し、出力したファ
+	イルのパスを返します。
+	{output} が渡されなかった場合は |tempname()| を使用して出力先を決定し
+	ます。
+	HTML 化には |2html.vim| が使用されます。
+
+gyazo#make_png_from_html({option})		*gyazo#make_png_from_html()*
+	HTML ファイルから png ファイルを作成し、その png のパスを返します。
+	{option} は辞書で以下の値を渡すことが出来ます。
+
+	"input"  : 画像化する HTML ファイル（必須）
+	"output" : 出力先
+		デフォルト値：tempname()
+	"width" : 画像化する際に使用する HTML のウィンドウ幅
+		デフォルト値：600
+Example:>
+	" 
+	let opt = { "input" : "test.html", "output" : "test.png" }
+	call gyazo#make_png_from_html(opt)
+<
+
+gyazo#post_from_image({image})				*gyazo#post_from_image()*
+	{image} を gyazo へと post します。
+	戻り値は post された gyazo の URL です。
+	{image} には png ファイルが使用出来ます。
+
+gyazo#last_post_url()					*gyazo#last_post_url()*
+	最後に gyazo に post された url を返します。
+
+==============================================================================
+vim:tw=78:fo=tcq2mM:ts=8:ft=help:norl
