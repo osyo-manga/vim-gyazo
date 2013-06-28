@@ -13,6 +13,8 @@ Requirement:
 	PhantomJS : http://phantomjs.org/
 	open-browser.vim(一部のコマンドで必須)
 		: https://github.com/tyru/open-browser.vim
+	TweetVim(一部のコマンドで必須)
+		: https://github.com/basyura/TweetVim
 
 
 ==============================================================================
@@ -36,15 +38,28 @@ Requirement:
 	コマンドの実行後に |open-browser| を使用してブラウザで Gyazo のペー
 	ジを開きます。
 
+:GyazoTweetVim {file} [, {text}]		*:GyazoTweetVim*
+	|:GyazoPost| と同等です。
+	コマンドの実行後に |tweetvim| を使用し Twitter へ URL をツイートします。
+	{text} が渡されている場合はツイートするテキストの先頭に {text} を追加
+	します。
+
 :[range]GyazoPostCurrentWindow			*:GyazoPostCurrentWindow*
 	カレントウィンドウの内容を gyazo へと post します。
 	ここで post された gyazo への URL は |gyazo#last_post_url()| で取得す
 	る事が出来ます。
 
 :[range]GyazoOpenBrowserCurrentWindow		*:GyazoOpenBrowserCurrentWindow*
-	|:GyazoOpenBrowserCurrentWindow| と同等です。
+	|:GyazoPostCurrentWindow| と同等です。
 	コマンドの実行後に |open-browser| を使用してブラウザで Gyazo のペー
 	ジを開きます。
+
+						*:GyazoTweetVimCurrentWindow*
+:[range]GyazoTweetVimCurrentWindow {file} [, {text}]
+	|:GyazoPostCurrentWindow| と同等です。
+	コマンドの実行後に |tweetvim| を使用し Twitter へ URL をツイートします。
+	{text} が渡されている場合はツイートするテキストの先頭に {text} を追加
+	します。
 
 ------------------------------------------------------------------------------
 関数						*gyazo-functions*
