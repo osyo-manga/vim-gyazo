@@ -25,5 +25,10 @@ command! -range=0 -bar
 \	GyazoOpenBrowserCurrentWindow
 \	call OpenBrowser(call("gyazo#post_from_current_window", <count> ? [{}, { "first" : <line1>, "last" : <line2>}] : []))
 
+command! -range=0 -bar -nargs=*
+\	GyazoTweetVimCurrentWindow
+\	execute "TweetVimCommandSay" <q-args> call("gyazo#post_from_current_window", <count> ? [{}, { "first" : <line1>, "last" : <line2>}] : [])
+
+
 let &cpo = s:save_cpo
 unlet s:save_cpo
