@@ -9,7 +9,7 @@ gyazo.txt		Vim から gyazo へポストするプラグインです。
 - Gyazoへようこそ : スクリーンショットの瞬間共有 : http://gyazo.com/
 
 Requirement:
-	cURL      : http://curl.haxx.se/
+	cURL      : http://curl.haxx.se/(一部のコマンドで必須)
 	Ruby      : http://www.ruby-lang.org/(一部のコマンドで必須)
 	PhantomJS : http://phantomjs.org/(一部のコマンドで必須)
 	open-browser.vim(一部のコマンドで必須)
