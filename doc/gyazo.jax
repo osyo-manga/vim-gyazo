@@ -9,8 +9,9 @@ gyazo.txt		Vim から gyazo へポストするプラグインです。
 - Gyazoへようこそ : スクリーンショットの瞬間共有 : http://gyazo.com/
 
 Requirement:
-	Ruby      : http://www.ruby-lang.org/
-	PhantomJS : http://phantomjs.org/
+	cURL      : http://curl.haxx.se/
+	Ruby      : http://www.ruby-lang.org/(一部のコマンドで必須)
+	PhantomJS : http://phantomjs.org/(一部のコマンドで必須)
 	open-browser.vim(一部のコマンドで必須)
 		: https://github.com/tyru/open-browser.vim
 	TweetVim(一部のコマンドで必須)
@@ -18,7 +19,6 @@ Requirement:
 
 
 ==============================================================================
-
 使い方						*gyazo-usage*
 
 
@@ -32,27 +32,32 @@ Requirement:
 	{file} を gyazo へとポストします。
 	ここで post された gyazo への URL は |gyazo#last_post_url()| で取得す
 	る事が出来ます。
+	NOTE:Ruby が必須です。
 
 :GyazoOpenBrowser {file}			*:GyazoOpenBrowser*
 	|:GyazoPost| と同等です。
 	コマンドの実行後に |open-browser| を使用してブラウザで Gyazo のペー
 	ジを開きます。
+	NOTE:Ruby が必須です。
 
 :GyazoTweetVim {file} [, {text}]		*:GyazoTweetVim*
 	|:GyazoPost| と同等です。
 	コマンドの実行後に |tweetvim| を使用し Twitter へ URL をツイートします。
 	{text} が渡されている場合はツイートするテキストの先頭に {text} を追加
 	します。
+	NOTE:Ruby が必須です。
 
 :[range]GyazoPostCurrentWindow			*:GyazoPostCurrentWindow*
 	カレントウィンドウの内容を gyazo へと post します。
 	ここで post された gyazo への URL は |gyazo#last_post_url()| で取得す
 	る事が出来ます。
+	NOTE:cURL or Ruby + PhantomJS が必須です。
 
 :[range]GyazoOpenBrowserCurrentWindow		*:GyazoOpenBrowserCurrentWindow*
 	|:GyazoPostCurrentWindow| と同等です。
 	コマンドの実行後に |open-browser| を使用してブラウザで Gyazo のペー
 	ジを開きます。
+	NOTE:cURL or Ruby + PhantomJS が必須です。
 
 						*:GyazoTweetVimCurrentWindow*
 :[range]GyazoTweetVimCurrentWindow {file} [, {text}]
@@ -60,6 +65,7 @@ Requirement:
 	コマンドの実行後に |tweetvim| を使用し Twitter へ URL をツイートします。
 	{text} が渡されている場合はツイートするテキストの先頭に {text} を追加
 	します。
+	NOTE:cURL or Ruby + PhantomJS が必須です。
 
 ------------------------------------------------------------------------------
 関数						*gyazo-functions*
@@ -104,11 +110,13 @@ Example:>
 	let opt = { "input" : "test.html", "output" : "test.png" }
 	call gyazo#make_png_from_html(opt)
 <
+	NOTE:PhantomJS が必須です。
 
 gyazo#post_from_image({image})				*gyazo#post_from_image()*
 	{image} を gyazo へと post します。
 	戻り値は post された gyazo の URL です。
 	{image} には png ファイルが使用出来ます。
+	NOTE:Ruby が必須です。
 
 gyazo#last_post_url()					*gyazo#last_post_url()*
 	最後に gyazo に post された url を返します。
