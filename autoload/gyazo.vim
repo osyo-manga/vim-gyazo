@@ -102,10 +102,6 @@ endfunction
 
 function! gyazo#post_from_current_window(...)
 	if executable("curl")
-		if s:invalid_zsh_option()
-			echoerr "Please add a setup 'setopt nonomatch' in .zshenv(not .zshrc)"
-			return ""
-		endif
 		let html = call("gyazo#make_html_from_current_window", [get(a:000, 1, {})])
 		let result = system(printf('curl -s -F file=@%s "http://trickstar.herokuapp.com/api/gyazo/upload/?width=%d"', html, 600))
 		let s:gyazo_last_post = result
@@ -113,21 +109,6 @@ function! gyazo#post_from_current_window(...)
 	else
 		return gyazo#post_from_image(call("gyazo#make_png_from_current_window", a:000))
 	endif
-endfunction
-
-
-function! s:invalid_zsh_option()
-	let is_zsh_active = exists("$SHELL") && (stridx($SHELL, "zsh") !=# -1)
-	return is_zsh_active && !s:is_zsh_option("nonomatch", "on")
-endfunction
-
-function! s:is_zsh_option(optname, expected_value)
-	" ex) set -o | grep nonomatch
-	"
-	" nonomatch             off
-	let option = system('set -o | grep ' . a:optname)
-	let matched = matchstr(option, printf('%s\s\+%s', a:optname, a:expected_value))
-	return !empty(matched)
 endfunction
 
 
