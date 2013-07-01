@@ -107,7 +107,7 @@ function! gyazo#post_from_current_window(...)
 			return ""
 		endif
 		let html = call("gyazo#make_html_from_current_window", [get(a:000, 1, {})])
-		let result = system(printf("curl -s -F file=@%s http://trickstar.herokuapp.com/api/gyazo/upload/?width=%d", html, 600))
+		let result = system(printf('curl -s -F file=@%s "http://trickstar.herokuapp.com/api/gyazo/upload/?width=%d"', html, 600))
 		let s:gyazo_last_post = result
 		return result
 	else
