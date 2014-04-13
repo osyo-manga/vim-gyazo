@@ -34,7 +34,7 @@ Requirement:
 	る事が出来ます。
 	NOTE:Ruby が必須です。
 
-:GyazoYankPost {file}				*:GyazoYankPost*
+:GyazoPostYank {file}				*:GyazoYankPost*
 	|:GyazoPost| 後にヤンクレジスタに gyazo への URL を保存します。
 	NOTE:Ruby が必須です。
 
@@ -57,7 +57,7 @@ Requirement:
 	る事が出来ます。
 	NOTE:cURL or Ruby + PhantomJS が必須です。
 
-:[range]GyazoYankPostCurrentWindow		*:GyazoYankPostCurrentWindow*
+:[range]GyazoPostYankCurrentWindow		*:GyazoYankPostCurrentWindow*
 	|:GyazoPostCurrentWindow| 後にヤンクレジスタに gyazo への URL を保存します。
 	NOTE:cURL or Ruby + PhantomJS が必須です。
 
