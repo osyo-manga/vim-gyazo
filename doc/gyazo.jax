@@ -34,6 +34,10 @@ Requirement:
 	る事が出来ます。
 	NOTE:Ruby が必須です。
 
+:GyazoYankPost {file}				*:GyazoYankPost*
+	|:GyazoPost| 後にヤンクレジスタに gyazo への URL を保存します。
+	NOTE:Ruby が必須です。
+
 :GyazoOpenBrowser {file}			*:GyazoOpenBrowser*
 	|:GyazoPost| と同等です。
 	コマンドの実行後に |open-browser| を使用してブラウザで Gyazo のペー
@@ -51,6 +55,10 @@ Requirement:
 	カレントウィンドウの内容を gyazo へと post します。
 	ここで post された gyazo への URL は |gyazo#last_post_url()| で取得す
 	る事が出来ます。
+	NOTE:cURL or Ruby + PhantomJS が必須です。
+
+:[range]GyazoYankPostCurrentWindow		*:GyazoYankPostCurrentWindow*
+	|:GyazoPostCurrentWindow| 後にヤンクレジスタに gyazo への URL を保存します。
 	NOTE:cURL or Ruby + PhantomJS が必須です。
 
 :[range]GyazoOpenBrowserCurrentWindow		*:GyazoOpenBrowserCurrentWindow*
