@@ -34,7 +34,7 @@ Requirement:
 	る事が出来ます。
 	NOTE:Ruby が必須です。
 
-:GyazoPostYank {file}				*:GyazoYankPost*
+:GyazoPostYank {file}				*:GyazoPostYank*
 	|:GyazoPost| 後にヤンクレジスタに gyazo への URL を保存します。
 	NOTE:Ruby が必須です。
 
