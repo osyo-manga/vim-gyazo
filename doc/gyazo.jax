@@ -57,7 +57,7 @@ Requirement:
 	る事が出来ます。
 	NOTE:cURL or Ruby + PhantomJS が必須です。
 
-:[range]GyazoPostYankCurrentWindow		*:GyazoYankPostCurrentWindow*
+:[range]GyazoPostYankCurrentWindow		*:GyazoPostYankCurrentWindow*
 	|:GyazoPostCurrentWindow| 後にヤンクレジスタに gyazo への URL を保存します。
 	NOTE:cURL or Ruby + PhantomJS が必須です。
 
